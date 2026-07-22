@@ -85,73 +85,75 @@
         
 
         <!--Pop up container to add new book-->
+        <div class="overlay">
+        
+            <article class="add-pop-up">
 
-        <article class="add-pop-up">
+                <!--Button to close the pop up-->
 
-            <!--Button to close the pop up-->
+                <button class ='exit-btn'>
 
-            <button class ='exit-btn'>
+                    <span class="span-first"></span>
 
-                <span class="span-first"></span>
+                    <span class="span-second"></span>
 
-                <span class="span-second"></span>
+                </button>
 
-            </button>
+                <!--Body of the pop up-->
 
-            <!--Body of the pop up-->
+                <section class="input-container">
 
-            <section class="input-container">
-
-                <label for="book-title-input">
-                    
-                    Title
-
-                    <input 
-                    type="text" placeholder="Book title" id="book-title-input">
-
-                </label>
-
-                <label for="author-input">
-                    
-                    Author
-
-                    <input 
-                    type="text" placeholder="Author" id="author-input">
-                    
-                </label>
-
-                <label for="book-description-input"
-                class="book-description-label">
-                    
-                    Description
-
-                    <textarea 
-                    maxlength ='500' placeholder="Write a description..." class="book-description-input"></textarea>
-
-                    <p class="char-count">
+                    <label for="book-title-input">
                         
-                        0/500
+                        Title
+
+                        <input 
+                        type="text" placeholder="Book title" id="book-title-input">
+
+                    </label>
+
+                    <label for="author-input">
+                        
+                        Author
+
+                        <input 
+                        type="text" placeholder="Author" id="author-input">
+                        
+                    </label>
+
+                    <label for="book-description-input"
+                    class="book-description-label">
+                        
+                        Description
+
+                        <textarea 
+                        maxlength ='500' placeholder="Write a description..." class="book-description-input"></textarea>
+
+                        <p class="char-count">
+                            
+                            0/500
+                        
+                        </p>
+                        
+                    </label>
+
+                    <div>
+
+                        <button class="add-book-btn">
+
+                            Add Book
+
+                        </button>
+
+                    </div>
+
                     
-                    </p>
-                    
-                </label>
 
-                <div>
+                </section>           
 
-                    <button class="add-book-btn">
+            </article>
 
-                        Add Book
-
-                    </button>
-
-                </div>
-
-                  
-
-            </section>
-            
-
-        </article>
+        </div>
 
 <!--MAIN LIBRARY CONTAINER-->
 

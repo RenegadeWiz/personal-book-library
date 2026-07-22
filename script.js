@@ -9,6 +9,7 @@ const authorInput = document.querySelector('#author-input')
 const bookDescriptionInput = document.querySelector('.book-description-input')
 const charCount = document.querySelector('.char-count')
 const hamburger = document.querySelector('.hamburger')
+const overlay = document.querySelector('.overlay')
 
 hamburger.addEventListener('click', function(){
     hamburger.classList.toggle('active')
@@ -18,10 +19,10 @@ hamburger.addEventListener('click', function(){
 
 /*CODE FOR OPENING AND CLOSING THE POP UP*/
 function openPopUp(){
-    addPopUp.classList.add('active');
+    overlay.classList.add('active');
 }
 function closePopUp(){
-    addPopUp.classList.remove('active');
+    overlay.classList.remove('active');
     bookTitleInput.value = '';
     authorInput.value = '';
     bookDescriptionInput.value = '';

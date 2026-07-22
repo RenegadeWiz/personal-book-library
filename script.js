@@ -65,7 +65,8 @@ function updateDisplay(){
 function addBook(){
 
     
-    addPopUp.style.transform = 'translate(-50%, -50%) scale(0)'
+    addPopUp.classList.remove('active');
+
     const titleValue = bookTitleInput.value;
     const authorValue = authorInput.value;
     const descriptionValue = bookDescriptionInput.value;

@@ -132,7 +132,7 @@ nav{
 }
 
 .hamburger{
-
+    background: none;
     border: none;
     border-radius: 5px;
     padding: .3rem 1rem;
@@ -151,7 +151,8 @@ nav{
 
 .hamburger.active{
     :nth-child(1){
-        transform: translateY(10px) rotate(45deg);
+        transform: translateY(11px) rotate(45deg);
+        color: blue;
     }
     :nth-child(2){
         transform: translateY(1px) rotate(-45deg);

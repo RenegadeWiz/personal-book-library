@@ -45,20 +45,70 @@ function updateDisplay(){
         const h3 = document.createElement('h3')
         const h4 = document.createElement('h4')
         const pElement = document.createElement('p')
+        const deleteButton = document.createElement('button')
+        const trashIcon = document.createElement('i')
+        const confirmationArticle = document.createElement('article')
+        const div = document.createElement('div')
+        const confirmP = document.createElement('p')
+        const yesButton = document.createElement('button')
+        const noButton = document.createElement('button')
 
-        article.setAttribute('data-index-number', i)
-        article.classList.add('book-detail');
-        
+
         booksContainer.appendChild(article);
         article.appendChild(h3);
         article.appendChild(h4);
         article.appendChild(pElement);
+        article.appendChild(deleteButton)
+        deleteButton.appendChild(trashIcon)
+        article.appendChild(confirmationArticle)
+        confirmationArticle.appendChild(confirmP)
+        confirmationArticle.appendChild(div)
+        div.appendChild(noButton)
+        div.appendChild(yesButton)
+
+
+        article.setAttribute('data-index-number', i)
+        article.classList.add('book-detail');
+        deleteButton.classList.add('delete-btn')
+        trashIcon.classList.add('fa-solid', 'fa-trash')
+        confirmationArticle.classList.add('confirm-delete')
+        yesButton.classList.add('yes-btn')
+        noButton.classList.add('no-btn')
+
 
         h3.textContent = booksArray[i].title;
         h4.textContent = booksArray[i].author;
         pElement.textContent = booksArray[i].description;
+        confirmP.textContent = 'Remove from library?'
+        noButton.textContent = 'Cancel'
+        yesButton.textContent = 'Delete'
 
+
+        deleteButton.addEventListener('click', function(e){
+            e.stopPropagation()
+            confirmationArticle.classList.add('active')
+            /*booksArray.splice(i, 1)
+            updateDisplay()
+            console.log('deleted')*/
+        })
+
+        noButton.addEventListener('click', function(e){
+            e.stopPropagation()
+            confirmationArticle.classList.remove('active')
+        })
+
+        yesButton.addEventListener('click', function(e){
+            e.stopPropagation()
+            booksArray.splice(i, 1)
+            updateDisplay()
+        })
+        
+        
         article.addEventListener('click', function(){
+
+            if(confirmationArticle.classList.contains('active')){
+                return;
+            }
             indexValue = article.dataset.indexNumber
 
             openPopUp()
@@ -72,17 +122,6 @@ function updateDisplay(){
             bookDescriptionInput.value = pContent
         })
 
-    /*ALTERNATIVE METHOD*/
-
-        /*
-        let output = `
-        <article class= 'book-detail'>
-            <h3>${booksArray[i].title}</h3>
-            <h4>${booksArray[i].author}</h4>
-            <p>${booksArray[i].description}</p>
-        </article>
-        `
-        booksContainer.innerHTML += output*/
     }
 }
 
@@ -128,5 +167,4 @@ bookDescriptionInput.addEventListener('input', function(){
     
     charCount.textContent = words + "/500"
 })
-
 

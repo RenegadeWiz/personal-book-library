@@ -376,13 +376,14 @@ main{
     background-color: var(--bg-secondary);
     min-height: 300px;
     gap: 1rem;
-    padding: 1rem;
+    padding: 2rem 1rem;
     align-items: center;
     box-shadow: var(--shadow);
     border-radius: 15px;
     border: 1px solid var(--border);
     transition: .3s ease;
     cursor: pointer;
+    position: relative;
 
     h3{
         font-size: 1.5rem;
@@ -406,6 +407,93 @@ main{
 
 .book-detail:hover{
     transform: translateY(-10px);
+}
+
+.delete-btn{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: .2s;
+    width: 30px;
+    height: 30px;
+}
+
+.delete-btn:hover{
+    background: #fee2e2;
+    color: var(--danger);
+}
+.delete-btn:active{
+    transform: scale(.9);
+}
+
+.confirm-delete{
+    transform: scale(0);
+    transition: .3s ease;
+    opacity: 0;
+}
+.confirm-delete.active{
+    transform: scale(1);
+    opacity: 1;
+    border: 1px solid var(--border);
+    min-width: 150px;
+    min-height: 100px;
+    background-color: var(--surface);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1rem;
+    border-radius: 15px;
+    position: relative;
+
+    p{
+        font-size: 1rem;
+        font-weight: bold;
+        flex-grow: 1;
+    }
+
+    div{
+        display: flex;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        border-top: 1px solid var(--border);
+
+        button{
+            flex-grow: 1;
+            padding: .5rem;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: transparent;
+            cursor: pointer;
+
+        }
+
+    }
+}
+
+
+.yes-btn{
+    background: transparent;
+    font-weight: bold;
+    color: var(--danger)
+}
+.yes-btn:hover{
+    background-color: var(--danger);
+    color: black;
+}
+
+.no-btn{
+    background: transparent;
+    font-weight: bold;
+}
+.no-btn:hover{
+    background-color: var(--success);
 }
 
 @media (max-width: 768px){

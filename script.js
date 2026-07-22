@@ -17,22 +17,25 @@ hamburger.addEventListener('click', function(){
 
 
 /*CODE FOR OPENING AND CLOSING THE POP UP*/
-
-addPopUpButton.addEventListener('click', function(){
-
+function openPopUp(){
     addPopUp.classList.add('active');
-    console.log('active')
-    /*addPopUp.style.transform = 'translate(-50%, -50%) scale(1)'*/
-})
-
-exitButton.addEventListener('click', function(){
+}
+function closePopUp(){
     addPopUp.classList.remove('active');
-})
+    bookTitleInput.value = '';
+    authorInput.value = '';
+    bookDescriptionInput.value = '';
+    addBookButton.textContent = 'Add book'
+}
+addPopUpButton.addEventListener('click', openPopUp)
+
+exitButton.addEventListener('click', closePopUp)
 
 
 /* MAIN CODE TO GET VALUE, STORE AND DISPLAY*/
 
 let booksArray = []
+let indexValue;
 
 function updateDisplay(){
     booksContainer.innerHTML = '';
@@ -42,6 +45,7 @@ function updateDisplay(){
         const h4 = document.createElement('h4')
         const pElement = document.createElement('p')
 
+        article.setAttribute('data-index-number', i)
         article.classList.add('book-detail');
         
         booksContainer.appendChild(article);
@@ -51,7 +55,21 @@ function updateDisplay(){
 
         h3.textContent = booksArray[i].title;
         h4.textContent = booksArray[i].author;
-        pElement.textContent = booksArray[i].description
+        pElement.textContent = booksArray[i].description;
+
+        article.addEventListener('click', function(){
+            indexValue = article.dataset.indexNumber
+
+            openPopUp()
+            addBookButton.textContent = 'Edit'
+            const h3Content = h3.textContent;
+            const h4Content = h4.textContent;
+            const pContent = pElement.textContent;
+
+            bookTitleInput.value = h3Content;
+            authorInput.value = h4Content;
+            bookDescriptionInput.value = pContent
+        })
 
     /*ALTERNATIVE METHOD*/
 
@@ -67,10 +85,25 @@ function updateDisplay(){
     }
 }
 
+
+function getBookValues(){}
+
 function addBook(){
 
-    
-    addPopUp.classList.remove('active');
+    if(addBookButton.textContent === 'Edit'){
+        const titleValue = bookTitleInput.value;
+        const authorValue = authorInput.value;
+        const descriptionValue = bookDescriptionInput.value;
+
+        const bookObject = {title: titleValue, author: authorValue, description: descriptionValue}
+        console.log(indexValue)
+
+        booksArray.splice(indexValue, 1, bookObject)
+
+        closePopUp();
+        updateDisplay()
+        return
+    }
 
     const titleValue = bookTitleInput.value;
     const authorValue = authorInput.value;
@@ -79,20 +112,20 @@ function addBook(){
     const bookObject = {title: titleValue, author: authorValue, description: descriptionValue}
 
     booksArray.push(bookObject)
-    console.log(booksArray)
+    closePopUp();
     updateDisplay()
 
-    bookTitleInput.value = '';
-    authorInput.value = '';
-    bookDescriptionInput.value = '';
+    
 }
 
 addBookButton.addEventListener('click', addBook)
 
 
-bookDescriptionInput.addEventListener('input', function(e){
+bookDescriptionInput.addEventListener('input', function(){
 
     const words = bookDescriptionInput.value.length;
     
-    charCount.textContent = words + "/400"
+    charCount.textContent = words + "/500"
 })
+
+

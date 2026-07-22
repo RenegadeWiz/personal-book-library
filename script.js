@@ -8,6 +8,11 @@ const bookTitleInput = document.querySelector('#book-title-input')
 const authorInput = document.querySelector('#author-input')
 const bookDescriptionInput = document.querySelector('.book-description-input')
 const charCount = document.querySelector('.char-count')
+const hamburger = document.querySelector('.hamburger')
+
+hamburger.addEventListener('click', function(){
+    hamburger.classList.toggle('active')
+})
 
 
 

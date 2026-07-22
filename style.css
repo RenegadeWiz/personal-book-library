@@ -40,6 +40,7 @@ body{
 nav{
     background-color: var(--bg-secondary);
     display: flex;
+    align-items: center;
     padding: .5rem 1rem;
 
     h1{
@@ -121,12 +122,43 @@ nav{
         label:focus-within{
             width: 300px;
         }
+
         
         
     }
 
 
     
+}
+
+.hamburger{
+
+    border: none;
+    border-radius: 5px;
+    padding: .3rem 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+    
+
+    span{
+        width: 1.5rem;
+        border: 1.5px solid black;
+        transition: .3s;
+    }
+}
+
+.hamburger.active{
+    :nth-child(1){
+        transform: translateY(10px) rotate(45deg);
+    }
+    :nth-child(2){
+        transform: translateY(1px) rotate(-45deg);
+    }
+    :nth-child(3){
+        opacity: 0;;
+    }
 }
 
 
@@ -315,5 +347,30 @@ main{
     p{
         font-size: .8rem;
 
+    }
+}
+
+@media (max-width: 768px){
+    .books-container{
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    nav{
+
+        h1{
+            font-size: 1.2rem;
+        }
+
+        ul{
+            display: none;
+        }
+
+        .search-box{
+            display: none;
+        }
+    }
+
+    .hamburger{
+        display: flex;
     }
 }
